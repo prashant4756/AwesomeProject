@@ -26,6 +26,15 @@ const HomeScreen = ({navigation}) => {
           color={randomColor()}
         />
       </View>
+      <View style={{padding: 4}}>
+        <Button
+          title="go to imagepicker"
+          onPress={() => {
+            navigation.navigate('imagePicker');
+          }}
+          color={randomColor()}
+        />
+      </View>
     </View>
   );
 };

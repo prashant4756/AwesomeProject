@@ -2,6 +2,8 @@ package com.awesomeproject;
 
 import android.app.Application;
 import android.content.Context;
+
+import com.awesomeproject.imagepicker.ImagePickerPackage;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;
@@ -29,6 +31,7 @@ public class MainApplication extends Application implements ReactApplication {
           // Packages that cannot be autolinked yet can be added manually here, for example:
 //           packages.add(new TestPackage());
            packages.add(new MyPackage());
+           packages.add(new ImagePickerPackage());
           return packages;
         }
 
