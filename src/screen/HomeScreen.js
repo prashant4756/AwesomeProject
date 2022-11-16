@@ -28,7 +28,7 @@ const HomeScreen = ({navigation}) => {
       </View>
       <View style={{padding: 4}}>
         <Button
-          title="go to imagepicker"
+          title="go to image options"
           onPress={() => {
             navigation.navigate('imagePicker');
           }}
