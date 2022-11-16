@@ -39,16 +39,16 @@ const requestPermission = () => {
       result['android.permission.WRITE_EXTERNAL_STORAGE'] === 'granted'
     ) {
       console.log('permissions is success');
-      return true; //Promise.resolve(true);
+      return true;
     } else if (
       result['android.permission.CAMERA'] ||
       result['android.permission.READ_EXTERNAL_STORAGE'] ||
       result['android.permission.WRITE_EXTERNAL_STORAGE'] === 'never_ask_again'
     ) {
       console.log('permissions is unsuccess');
-      return false; //Promise.reject('error');
+      return false;
     }
-    return false; //Promise.reject('error');
+    return false;
   });
 };
 

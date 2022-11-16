@@ -1,15 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {Button, Image, View} from 'react-native';
 import randomColor from '../utils/ColorUtils';
 import ImagePickerModule from '../androidmodule/ImagePickerModuleInteface';
 import {launchCamera} from 'react-native-image-picker';
 import requestPermission from '../permissions/RequestAndroidPermissions';
-import requestCameraPermission from '../permissions/RequestAndroidCameraPermissions';
 
 const ImagePickerScreen = ({navigation}) => {
-  const [hasPermission, setHasPermission] = useState(false);
-  const [hasFilePermission, setHasFilePermission] = useState(false);
-  const [hasCameraPermission, setHasCameraPermission] = useState(false);
   const [imageUri, setImageUri] = useState(null);
   const onPress = async () => {
     console.log('pick image js');
@@ -24,16 +20,6 @@ const ImagePickerScreen = ({navigation}) => {
 
   const onPressCaptureImage = () => {
     try {
-      // const isGranted = await requestPermission();
-      // console.log(isGranted);
-      // if (isGranted) {
-      //   console.log('opening camera');
-      //   const image = ImagePickerModule.launchCamera();
-      //   console.log(image);
-      //   setImageUri(image);
-      // }
-      // console.log('operation completed');
-
       requestPermission().then(async isGranted => {
         console.log(isGranted);
         if (isGranted) {
@@ -46,37 +32,8 @@ const ImagePickerScreen = ({navigation}) => {
       });
     } catch (error) {
       console.error(error);
-      // setHasFilePermission(false);
     }
   };
-
-  // useEffect(() => {
-  //   if (hasCameraPermission) {
-  //     const image = ImagePickerModule.launchCamera();
-  //     console.log(image);
-  //     setImageUri(image);
-  //   }
-  // }, [hasCameraPermission]);
-
-  // useEffect(() => {
-  //   if (hasFilePermission) {
-  //     requestCameraPermission().then(isGranted => {
-  //       console.log('now camera permission');
-  //       setHasCameraPermission(isGranted);
-  //       console.log(isGranted);
-  //     });
-  //   }
-  // }, [hasFilePermission]);
-
-  useEffect(() => {
-    console.log('permission is');
-    console.log(hasPermission);
-    if (hasPermission) {
-      const image = ImagePickerModule.launchCamera();
-      console.log(image);
-      setImageUri(image);
-    }
-  }, [hasPermission]);
 
   const onPressCaptureImageLib = async () => {
     let options = {
